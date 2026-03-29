@@ -1,16 +1,15 @@
 :root {
-  --accent: #22c55e;
-  --accent-soft: rgba(34, 197, 94, 0.15);
-  --bg: #050816;
-  --card-bg: #052e1a;
-  --text: #c7c8d4;
-  --muted: #86efac;
-  --border-subtle: rgba(148, 163, 184, 0.25);
-  --radius-xl: 1.5rem;
-  --radius-lg: 1rem;
-  --radius-pill: 999px;
-  --shadow-soft: 0 22px 40px rgba(15, 23, 42, 0.65);
-  --transition: 180ms ease-out;
+  --bg: #f8fafc;              /* fond principal (gris très clair) */
+  --bg-alt: #eef2f7;          /* sections alternées */
+  --card-bg: #ffffff;         /* cartes blanches */
+
+  --accent: #2563eb;          /* bleu professionnel */
+  --accent-soft: rgba(37, 99, 235, 0.1);
+
+  --text: #0f172a;            /* texte sombre */
+  --muted: #64748b;           /* texte secondaire */
+
+  --border-subtle: rgba(15, 23, 42, 0.1);
 }
 
 /* Reset simple */
