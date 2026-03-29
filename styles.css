@@ -1,15 +1,17 @@
 :root {
-  --bg: #f8fafc;              /* fond principal (gris très clair) */
-  --bg-alt: #eef2f7;          /* sections alternées */
-  --card-bg: #ffffff;         /* cartes blanches */
-
-  --accent: #2563eb;          /* bleu professionnel */
-  --accent-soft: rgba(37, 99, 235, 0.1);
-
-  --text: #0f172a;            /* texte sombre */
-  --muted: #64748b;           /* texte secondaire */
-
-  --border-subtle: rgba(15, 23, 42, 0.1);
+  --bg: #050816;
+  --bg-alt: #0b1020;
+  --card-bg: #0f172a;
+  --accent: #06b6d4;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border-subtle: rgba(148, 163, 184, 0.25);
+  --radius-xl: 1.5rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+  --shadow-soft: 0 22px 40px rgba(15, 23, 42, 0.65);
+  --transition: 180ms ease-out;
 }
 
 /* Reset simple */
@@ -41,7 +43,7 @@ body {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, #f8fafc, #eef2f7);
+  background: linear-gradient(to bottom, rgba(16, 53, 79, 0.9), rgba(16, 53, 79, 0.72));
   border-bottom: 1px solid rgba(148, 163, 184, 0.18);
 }
 
