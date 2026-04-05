@@ -3,13 +3,36 @@ const navToggle = document.getElementById("navToggle");
 const navLinks = document.querySelector(".nav-links");
 
 if (navToggle && navLinks) {
+  // accessibility: expose expanded state
+  navToggle.setAttribute('aria-expanded', 'false');
+
   navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
+    const isOpen = navLinks.classList.toggle("show");
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
+  // close menu when a link is clicked
   navLinks.addEventListener("click", (e) => {
     if (e.target.tagName === "A") {
       navLinks.classList.remove("show");
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // close on Escape and click outside
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('show')) {
+      navLinks.classList.remove('show');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.focus();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!navLinks.contains(target) && target !== navToggle && navLinks.classList.contains('show')) {
+      navLinks.classList.remove('show');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
   });
 }
@@ -45,8 +68,8 @@ const formStatus = document.getElementById("formStatus");
 if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
-
-        formStatus.textContent = "Envoi en cours...";
+    formStatus.textContent = "Envoi en cours...";
+    formStatus.classList.remove('success','error');
 
         // Identifiants EmailJS ✔ OFFICIELS
         const SERVICE_ID = "service_f7gnu9n";
@@ -54,14 +77,16 @@ if (contactForm) {
 
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, contactForm)
             .then(() => {
-                formStatus.textContent = "Message envoyé !";
-                formStatus.style.color = "green";
-                contactForm.reset();
+        formStatus.textContent = "Message envoyé !";
+        formStatus.classList.add('success');
+        contactForm.reset();
+        setTimeout(() => { formStatus.textContent = ''; formStatus.classList.remove('success'); }, 6000);
             })
             .catch(error => {
-                formStatus.textContent = "Erreur lors de l'envoi. Veuillez réessayer plus tard.";
-                formStatus.style.color = "red";
-                console.error("Erreur EmailJS :", error);
+        formStatus.textContent = "Erreur lors de l'envoi. Veuillez réessayer plus tard.";
+        formStatus.classList.add('error');
+        console.error("Erreur EmailJS :", error);
+        setTimeout(() => { formStatus.classList.remove('error'); }, 6000);
             });
     });
 }
